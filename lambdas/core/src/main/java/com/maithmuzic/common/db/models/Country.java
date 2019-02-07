@@ -1,14 +1,24 @@
 package com.maithmuzic.common.db.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+@DynamoDBTable(tableName = "Countries")
 public class Country {
+    @DynamoDBAttribute(attributeName = "Name")
     private String name;
 
+    @DynamoDBHashKey(attributeName = "Alpha2Code")
     private String alpha2Code;
 
+    @DynamoDBHashKey(attributeName = "Alpha3Code")
     private String alpha3Code;
 
+    @DynamoDBHashKey(attributeName = "NumericCode")
     private String numericCode;
 
+    @DynamoDBHashKey(attributeName = "CallingCode")
     private String callingCode;
 
     public String getName() {
