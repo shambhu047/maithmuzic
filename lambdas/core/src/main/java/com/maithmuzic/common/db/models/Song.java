@@ -16,6 +16,10 @@ public class Song {
     @DynamoDBRangeKey(attributeName = "AlbumId")
     private String albumId;
 
+    @DynamoDBAttribute(attributeName = "Language")
+    @DynamoDBTypeConverted(converter = Language.LanguageConverter.class)
+    private Language language;
+
     // list of singers' id
     @DynamoDBAttribute(attributeName = "Singers")
     private List<String> singers;
@@ -27,7 +31,8 @@ public class Song {
     private String lyricist;
 
     @DynamoDBAttribute(attributeName = "Genres")
-    private List<String> genres;
+    @DynamoDBTypeConverted(converter = Genre.GenresListConverter.class)
+    private List<Genre> genres;
 
     @DynamoDBAttribute(attributeName = "Tags")
     private List<String> tags;
@@ -80,11 +85,11 @@ public class Song {
         this.lyricist = lyricist;
     }
 
-    public List<String> getGeners() {
+    public List<Genre> getGeners() {
         return genres;
     }
 
-    public void setGeners(List<String> genres) {
+    public void setGeners(List<Genre> genres) {
         this.genres = genres;
     }
 
@@ -96,16 +101,33 @@ public class Song {
         this.tags = tags;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
     @Override
     public String toString() {
         return "Song{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", albumId='" + albumId + '\'' +
+                ", language=" + language +
                 ", singers=" + singers +
                 ", musicians=" + musicians +
                 ", lyricist='" + lyricist + '\'' +
-                ", geners=" + genres +
+                ", genres=" + genres +
                 ", tags=" + tags +
                 '}';
     }
