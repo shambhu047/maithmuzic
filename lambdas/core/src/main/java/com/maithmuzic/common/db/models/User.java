@@ -1,29 +1,26 @@
 package com.maithmuzic.common.db.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
+@DynamoDBTable(tableName = "Users")
 public class User {
-    private String id;
-
+    @DynamoDBHashKey(attributeName = "Username")
     private String username;
 
+    @DynamoDBAttribute(attributeName = "Password")
     private String password;
 
+    @DynamoDBAttribute(attributeName = "Email")
     private String email;
 
+    @DynamoDBAttribute(attributeName = "PhoneNumber")
     private String phoneNumber;
 
+    @DynamoDBAttribute(attributeName = "Country")
     private String country;
 
+    @DynamoDBAttribute(attributeName = "GroupId")
     private String groupId;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -76,7 +73,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
