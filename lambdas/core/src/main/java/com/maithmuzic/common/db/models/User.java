@@ -7,6 +7,12 @@ public class User {
     @DynamoDBHashKey(attributeName = "Username")
     private String username;
 
+    @DynamoDBAttribute(attributeName = "FirstName")
+    private String firstName;
+
+    @DynamoDBAttribute(attributeName = "LastName")
+    private String lastName;
+
     @DynamoDBAttribute(attributeName = "Password")
     private String password;
 
@@ -22,12 +28,35 @@ public class User {
     @DynamoDBAttribute(attributeName = "GroupId")
     private String groupId;
 
+    @DynamoDBAttribute(attributeName = "Status")
+    @DynamoDBTypeConverted(converter = UserStatus.UserStatusConverter.class)
+    private UserStatus status;
+
+    @DynamoDBAttribute(attributeName = "InvalidPasswordAttempts")
+    private int invalidPasswordAttempts;
+
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -58,6 +87,14 @@ public class User {
         return country;
     }
 
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+
     public void setCountry(String country) {
         this.country = country;
     }
@@ -70,15 +107,27 @@ public class User {
         this.groupId = groupId;
     }
 
+    public int getInvalidPasswordAttempts() {
+        return invalidPasswordAttempts;
+    }
+
+    public void setInvalidPasswordAttempts(int invalidPasswordAttempts) {
+        this.invalidPasswordAttempts = invalidPasswordAttempts;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", country='" + country + '\'' +
                 ", groupId='" + groupId + '\'' +
+                ", status=" + status +
+                ", invalidPasswordAttempts=" + invalidPasswordAttempts +
                 '}';
     }
 }
