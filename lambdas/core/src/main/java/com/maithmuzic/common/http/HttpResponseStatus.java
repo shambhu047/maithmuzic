@@ -1,7 +1,7 @@
 package com.maithmuzic.common.http;
 
 // TODO:
-public enum ResponseStatus {
+public enum HttpResponseStatus {
     Ok(200),
 
     Created(201),
@@ -16,15 +16,19 @@ public enum ResponseStatus {
 
     NotFound(404),
 
+    MethodNotAllowed(405),
+
     Gone(410),
 
     InternalServerError(500),
 
-    ServiceUnavailable(503);
+    ServiceUnavailable(503),
+
+    UnsupportedMediaType(415);
 
     private int code;
 
-    private ResponseStatus(int statusCode) {
+    private HttpResponseStatus(int statusCode) {
         this.code = statusCode;
     }
 

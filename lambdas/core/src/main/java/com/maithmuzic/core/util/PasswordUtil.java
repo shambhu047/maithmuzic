@@ -1,6 +1,5 @@
 package com.maithmuzic.core.util;
 
-import com.sun.istack.internal.NotNull;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
@@ -10,7 +9,7 @@ import java.nio.charset.Charset;
 public class PasswordUtil {
     public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 
-    public static String hash(@NotNull String password, @NotNull Charset charset) {
+    public static String hash( String password, Charset charset) {
         String hash;
         char[] passwordSplitted = null;
         Argon2 hasher = null;
@@ -33,11 +32,11 @@ public class PasswordUtil {
         return hash;
     }
 
-    public static String hash(@NotNull String password) {
+    public static String hash( String password) {
         return hash(password, DEFAULT_CHARSET);
     }
 
-    public static boolean verify(@NotNull String hash, @NotNull String password, Charset charset) {
+    public static boolean verify( String hash, String password, Charset charset) {
         Argon2 hasher = null;
         char[] passwordSplitted = null;
         boolean isSame;
@@ -55,7 +54,7 @@ public class PasswordUtil {
         return isSame;
     }
 
-    public static boolean verify(@NotNull String hash, @NotNull String password) {
+    public static boolean verify(String hash, String password) {
         return verify(hash, password, DEFAULT_CHARSET);
     }
 

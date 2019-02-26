@@ -1,4 +1,4 @@
-package com.maithmuzic.core.response.model;
+package com.maithmuzic.core.api.response.model;
 
 import com.maithmuzic.common.db.models.UserRole;
 import com.maithmuzic.common.db.models.UserStatus;

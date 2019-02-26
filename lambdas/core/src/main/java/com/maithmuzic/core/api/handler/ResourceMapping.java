@@ -1,4 +1,4 @@
-package com.maithmuzic.core.handler;
+package com.maithmuzic.core.api.handler;
 
 import com.maithmuzic.common.http.HTTPMethod;
 

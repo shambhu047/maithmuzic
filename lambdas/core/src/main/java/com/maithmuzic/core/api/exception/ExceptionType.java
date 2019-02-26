@@ -1,0 +1,12 @@
+package com.maithmuzic.core.api.exception;
+
+public enum ExceptionType {
+    NO_SECURITY_TOKEN,
+    EMPTY_SECURITY_TOKEN,
+    INVALID_SECURITY_TOKEN,
+    INTERNAL_SERVER_ERROR,
+    RESOURCE_NOT_FOUND,
+    METHOD_NOT_ALLOWED,
+    BAD_REQUEST,
+    UNSUPPORTED_MEDIA_TYPE,
+}
